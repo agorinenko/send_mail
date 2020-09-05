@@ -7,6 +7,7 @@ from envparse import env
 from fastapi import Body, FastAPI
 from pydantic import BaseModel
 from starlette import status
+from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
 env.read_envfile()
@@ -19,6 +20,21 @@ FROM = env.str('FROM')
 TO = env.str('TO')
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://127.0.0.1",
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class Mail(BaseModel):
