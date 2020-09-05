@@ -21,3 +21,5 @@ http://www.uvicorn.org/deployment/
 https://fastapi.tiangolo.com/  
 ## Unsafe apps are blocked - enable
 https://myaccount.google.com/lesssecureapps
+## Build Docker
+docker-compose up -d --build
