@@ -2,6 +2,7 @@ version: '3.1'
 
 services:
   app:
+    container_name: send_mail_app_1
     ports:
       - 8000:8000
     build:
